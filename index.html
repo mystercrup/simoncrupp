@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirigiendo...</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <script>
+      // Detectar bots de Meta/Facebook/Instagram
+      const bots = [
+        /facebookexternalhit/i,
+        /Facebot/i,
+        /WhatsApp/i,
+        /Meta/i,
+        /Instagram/i
+      ];
+
+      const userAgent = navigator.userAgent;
+      const isBot = bots.some(bot => bot.test(userAgent));
+
+      if (!isBot) {
+        // Número en base64: "NTQ5MjYxNjcyOTU4MQ=="
+        const encoded = "NTQ5MjYxNjcyOTU4MQ==";
+        const decoded = atob(encoded);
+        const mensaje = encodeURIComponent("Hola, vengo por la publicidad");
+        window.location.href = `https://wa.me/${decoded}?text=${mensaje}`;
+      } else {
+        document.write("<h3>Gracias por visitar</h3>");
+      }
+    </script>
+  </head>
+  <body>
+    <noscript>Activá JavaScript para continuar.</noscript>
+  </body>
+</html>
